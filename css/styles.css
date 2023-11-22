@@ -119,3 +119,7 @@
   justify-content: space-evenly;
   margin: 1.5rem;
 }
+
+.book-img-preview {
+  max-width: 50%;
+}

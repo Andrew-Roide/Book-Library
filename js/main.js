@@ -1,7 +1,7 @@
 const form = document.querySelector('.form-option');
 const searchBar = document.querySelector('.search-bar');
 const searchButton = document.querySelector('.search-button');
-let resultsToDisplay = [];
+let resultsToDisplay;
 
 function fetchAPI() {
   let searchValue = searchBar.value;
@@ -17,7 +17,6 @@ function fetchAPI() {
     .then((data) => {
       resultsToDisplay = extractResults(data);
       renderSearch(resultsToDisplay);
-      console.log(data);
     })
     .catch((error) => {
       console.error('Error:', error);
@@ -28,23 +27,30 @@ function fetchAPI() {
 function extractResults(data) {
   const numOfResultsToDisplay = 5;
   const extractedResults = [];
+  const newArry = data.items.slice(0,6);
 
-  for (let i = 0; i < numOfResultsToDisplay; i++) {
-    const currentItem = data.items[i].volumeInfo;
-    if (currentItem) {
-      const result = {
-        title: currentItem.title,
-        author: currentItem.authors,
-        numPages: currentItem.pageCount,
-        isbn:
-          currentItem.industryIdentifiers[0].type +
-          ':' +
-          currentItem.industryIdentifiers[0].identifier,
-        previewLink: currentItem.imageLinks.thumbnail
-      };
-      extractedResults.push(result);
-    }
-  }
+  newArry.forEach(item => {
+    const currentItem = item.volumeInfo;
+    const industryIdentifiers = currentItem.industryIdentifiers || [];
+    const firstIdentifier = industryIdentifiers[0] || {};
+
+    const result = {
+      title: currentItem.title || 'Title not available',
+      author: currentItem.authors
+        ? currentItem.authors.join(', ')
+        : 'Author not available',
+      numPages: currentItem.pageCount
+        ? `${currentItem.pageCount} pages`
+        : 'Number of pages not available',
+      isbn: `${firstIdentifier.type || 'Type not available'} : ${
+        firstIdentifier.identifier || 'Identifier not available'
+      }`,
+      previewLink:
+        currentItem.imageLinks?.smallThumbnail || './images/default-image-url.png',
+    };
+    extractedResults.push(result);
+  });
+
   return extractedResults;
 }
 
