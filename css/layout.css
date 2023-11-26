@@ -1,0 +1,38 @@
+html,
+body {
+  margin: 0;
+  background-color: #ece3ce;
+}
+
+main {
+  background: #739072;
+  margin: 0 auto;
+  max-width: 1600px;
+  min-height: 100vh;
+}
+
+h2,
+p,
+button {
+  color: #ece3ce;
+  text-shadow:
+    -1px -1px 0 #3a4d39,
+    1px -1px 0 #3a4d39,
+    -1px 1px 0 #3a4d39,
+    1px 1px 0 #3a4d39;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}

@@ -8,11 +8,57 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow&family=Josefin+Slab&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
+    <div class="container">
+      <div class="row nav-bar">
+        <div class="title-container">
+          <h1 class="title">The Bookshelf Nook</h1>
+        </div>
+        <div class="menu-container">
+          <div class="menu">
+            <a class="find-book">Find A Book</a>
+            <a class="your-bookshelf">Your Bookshelf</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </header>
   <main>
+    <div class="container content-container search">
+      <div class="row">
+        <div class="search-title">
+          <h2>Search A Book</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="tag-line">
+          <p>Discover Your Favorite Books and Authors: Your Next Read Awaits! Find, Explore, and Add to Your Book Nook with Ease.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-container">
+          <form class="form-option">
+            <div class="form-seach">
+              <label class="form-label" for="search"></label>
+              <input class="search-bar" type="text" name="search" placeholder="search your book" required />
+            </div>
+            <div class="search-button-container">
+              <button class="search-button">Search</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="container search-results">
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
