@@ -13,7 +13,7 @@ main {
 
 h2,
 p,
-.search-button {
+button {
   color: #ece3ce;
   text-shadow:
     -1px -1px 0 #3a4d39,

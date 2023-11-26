@@ -3,7 +3,7 @@ const searchBar = document.querySelector('.search-bar');
 const searchButton = document.querySelector('.search-button');
 let resultsToDisplay;
 
-function fetchAPI() {
+function fetchVolumes() {
   let searchValue = searchBar.value;
   const myRequest = `https://www.googleapis.com/books/v1/volumes?q={${searchValue}}`;
 
@@ -25,9 +25,8 @@ function fetchAPI() {
 }
 
 function extractResults(data) {
-  const numOfResultsToDisplay = 5;
   const extractedResults = [];
-  const newArry = data.items.slice(0,6);
+  const newArry = data.items.slice(0,8);
 
   newArry.forEach(item => {
     const currentItem = item.volumeInfo;
@@ -49,6 +48,7 @@ function extractResults(data) {
         currentItem.imageLinks?.smallThumbnail || './images/default-image-url.png',
     };
     extractedResults.push(result);
+    console.log(result);
   });
 
   return extractedResults;
@@ -56,7 +56,7 @@ function extractResults(data) {
 
 searchButton.addEventListener('click', (event) => {
   event.preventDefault();
-  fetchAPI();
+  fetchVolumes();
   form.reset();
 });
 
