@@ -85,8 +85,7 @@ function renderSearch(resultsToDisplay) {
     searchListContainer.classList.add('search-list-container');
 
     searchResultsTitleContainer.appendChild(searchResultsH2);
-    searchContainer.appendChild(searchResultsTitleContainer);
-    searchContainer.appendChild(searchListContainer);
+    searchContainer.append(searchResultsTitleContainer, searchListContainer);
 
     resultsToDisplay.forEach((result) => {
       const searchResultsContainer = document.querySelector('.search-list-container');
@@ -130,14 +129,15 @@ function renderSearch(resultsToDisplay) {
       addBookBtn.classList.add('add-book-btn');
       addBookBtn.textContent = 'Add Book';
 
-      bookInformation.appendChild(bookTitle);
-      bookInformation.appendChild(bookAuthor);
-      bookInformation.appendChild(bookNumPages);
-      bookInformation.appendChild(bookISBN);
+      bookInformation.append(
+        bookTitle,
+        bookAuthor,
+        bookNumPages,
+        bookISBN
+      );
       bookDisplayInfo.appendChild(bookImage);
       bookImage.appendChild(bookImgPreview);
-      bookDisplayInfo.appendChild(bookInformation);
-      bookDisplayInfo.appendChild(addBookBtnContainer);
+      bookDisplayInfo.append(bookInformation, addBookBtnContainer);
       addBookBtnContainer.appendChild(addBookBtn);
       searchResultsList.appendChild(bookDisplayInfo);
       searchResultsContainer.appendChild(searchResultsList);
