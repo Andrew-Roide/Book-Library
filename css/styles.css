@@ -51,20 +51,16 @@
   .book-image {
     display: flex;
     justify-content: center;
-    width: 30vw;
+    width: 100%;
   }
 }
 
-.content-container {
+.search {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 1.5rem;
-}
-
-.search {
-  display: ;
 }
 
 .search-title {
@@ -89,6 +85,10 @@
   }
 }
 
+.form-search {
+  width: 200%;
+}
+
 .form-option {
   display: flex;
   flex-direction: column;
@@ -99,7 +99,7 @@
 .search-bar {
   margin-top: 2rem;
   height: 1.5rem;
-  width: 40vh;
+  width: 100%;
   padding-left: 10px;
   background-color: #d9d9d9;
   border: none;
@@ -162,10 +162,6 @@ img.book-img-preview {
 }
 
 @media screen and (max-width: 768px) {
-  img.book-img-preview {
-    width: 30vw;
-  }
-
   .search-results-title-container {
     display: flex;
     justify-content: center;
