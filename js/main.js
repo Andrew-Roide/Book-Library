@@ -16,10 +16,11 @@ function fetchVolumes() {
     })
     .then((data) => {
       resultsToDisplay = extractResults(data);
+      viewSwap('searchResults');
       renderSearch(resultsToDisplay);
     })
     .catch((error) => {
-      console.error('Error:', error);
+      renderSearchEmpty(resultsToDisplay);
       throw error;
     });
 }
@@ -54,17 +55,36 @@ function extractResults(data) {
   return extractedResults;
 }
 
-searchButton.addEventListener('click', (event) => {
-  event.preventDefault();
-  fetchVolumes();
-  form.reset();
-});
+function viewSwap(elementToSwap) {
+  const search = document.querySelector('.search');
 
-// Issue 2 task
+  if(elementToSwap === 'searchResults'){
+    search.classList.add('hidden');
+  }
+  // will build on this when clicking find a book, your bookshelf, or adding book to bookshelf
+}
+
 function renderSearch(resultsToDisplay) {
-  const searchResultsContainer = document.querySelector('.search-results');
+  const searchContainer = document.querySelector('.search-results');
+
+  const searchResultsTitleContainer = document.createElement('div');
+  searchResultsTitleContainer.classList.add('search-results-title-container');
+
+  const searchResultsH2 = document.createElement('h2');
+  searchResultsH2.classList.add('search-results-title');
+  searchResultsH2.textContent = 'Search Results';
+
+  const searchListContainer = document.createElement('div');
+  searchListContainer.classList.add('search-list-container');
+
+  searchResultsTitleContainer.appendChild(searchResultsH2);
+  searchContainer.appendChild(searchResultsTitleContainer);
+  searchContainer.appendChild(searchListContainer);
+
 
   resultsToDisplay.forEach((result) => {
+    const searchResultsContainer = document.querySelector('.search-list-container');
+
     const searchResultsList = document.createElement('div');
     searchResultsList.classList.add('search-results-list');
 
@@ -117,3 +137,26 @@ function renderSearch(resultsToDisplay) {
     searchResultsContainer.appendChild(searchResultsList);
   });
 }
+
+function renderSearchEmpty(resultsToDisplay) {
+  if (!resultsToDisplay) {
+    const targetElement = document.querySelector('.tag-line');
+    const closestParent = targetElement.closest('.row');
+
+    const noBooksContainer = document.createElement('div');
+    noBooksContainer.classList.add('row');
+
+    const noBooksErrorMessage = document.createElement('p');
+    noBooksErrorMessage.classList.add('no-books-error-message');
+    noBooksErrorMessage.textContent = 'No Books Found! Search Again.';
+
+    closestParent.insertAdjacentElement('afterend',noBooksContainer);
+    noBooksContainer.appendChild(noBooksErrorMessage);
+  }
+}
+
+searchButton.addEventListener('click', (event) => {
+  event.preventDefault();
+  fetchVolumes();
+  form.reset();
+});

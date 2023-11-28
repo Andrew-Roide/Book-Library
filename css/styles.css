@@ -51,6 +51,7 @@
   .book-image {
     display: flex;
     justify-content: center;
+    width: 30vw;
   }
 }
 
@@ -63,7 +64,7 @@
 }
 
 .search {
-  display: none;
+  display: ;
 }
 
 .search-title {
@@ -98,7 +99,7 @@
 .search-bar {
   margin-top: 2rem;
   height: 1.5rem;
-  width: 25vw;
+  width: 40vh;
   padding-left: 10px;
   background-color: #d9d9d9;
   border: none;
@@ -124,7 +125,14 @@
   transform: translateY(3px);
 }
 
-.search-results {
+.search-results-title-container {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 1.25rem;
+  padding: 15px 50px 0 0;
+}
+
+.search-list-container {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -141,11 +149,33 @@
 }
 
 .book-information {
+  font-family: "Josefin Sans", sans-serif;
+  color: #ece3ce;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+  line-height: 2rem;
   margin-left: 15px;
+  width: 20rem;
 }
 
 img.book-img-preview {
   width: 6vw;
+}
+
+@media screen and (max-width: 768px) {
+  img.book-img-preview {
+    width: 30vw;
+  }
+
+  .search-results-title-container {
+    display: flex;
+    justify-content: center;
+    font-size: 1.25rem;
+  }
+}
+
+.book-title {
+  font-style: italic;
+  font-weight: bold;
 }
 
 .add-book-btn-container {
